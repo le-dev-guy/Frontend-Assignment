@@ -1,0 +1,58 @@
+.stock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 90px;
+  height: 80%;
+}
+input[type='text'] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+::placeholder {
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+}
+#stocks-table {
+  width: 90%;
+  margin-top: 50px;
+  overflow: auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#table-head tr > th {
+  font-size: 25px;
+  font-family: 'Roboto' sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 20px;
+  border: 2px solid grey;
+}
+#table-row:nth-child(even) {
+  background-color: #d6eeee;
+}
+
+#table-row th {
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+#table-row th a {
+  text-decoration: none;
+  color: black;
+}
+#table-row td {
+  font-size: 18px;
+  font-family: sans-serif;
+}
+#table-body tr:hover {
+  border: 1px solid black;
+}
