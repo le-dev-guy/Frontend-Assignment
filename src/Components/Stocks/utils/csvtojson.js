@@ -1,4 +1,4 @@
-export const csvToJSON = (csv, setRows) => {
+export const csvToJSON = (csv, setFilteredRows, setOriginalRows) => {
   const lines = csv.split('\n');
   const result = [];
   let headers;
@@ -18,5 +18,6 @@ export const csvToJSON = (csv, setRows) => {
     result.push(obj);
   }
   result.push();
-  setRows(result);
+  setFilteredRows(result);
+  setOriginalRows(result);
 };

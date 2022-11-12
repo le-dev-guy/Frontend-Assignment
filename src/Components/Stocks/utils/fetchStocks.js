@@ -1,6 +1,6 @@
 import { csvToJSON } from './csvtojson';
 
-export const fetchStocksData = (setRows) => {
+export const fetchStocksData = (setFilteredRows, setOriginalRows) => {
   fetch('https://prototype.sbulltech.com/api/v2/instruments')
     .then((response) => response.body)
     .then((rb) => {
@@ -25,6 +25,6 @@ export const fetchStocksData = (setRows) => {
       new Response(stream, { headers: { 'Content-Type': 'text/csv' } }).text()
     )
     .then((result) => {
-      csvToJSON(result, setRows);
+      csvToJSON(result, setFilteredRows, setOriginalRows);
     });
 };

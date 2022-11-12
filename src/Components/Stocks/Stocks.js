@@ -9,9 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import SearchBar from 'material-ui-search-bar';
-import { stocksOriginalData } from '../../Constants.js/stocksData';
-import './Stocks.css';
 import { fetchStocksData } from './utils/fetchStocks';
+import './Stocks.css';
 
 const useStyles = makeStyles({
   table: {
@@ -20,22 +19,28 @@ const useStyles = makeStyles({
 });
 
 function Stocks() {
-  const [rows, setRows] = useState([]);
+  const [originalRows, setOriginalRows] = useState([]);
+  const [filteredRows, setFilteredRows] = useState([]);
   const [searched, setSearched] = useState('');
   const classes = useStyles();
 
   useEffect(() => {
-    fetchStocksData(setRows);
+    fetchStocksData(setFilteredRows, setOriginalRows);
   }, []);
 
   const requestSearch = (searchVal) => {
-    const filteredRows = stocksOriginalData.filter((row) => {
-      return row.Symbol.toLowerCase().includes(searchVal.toLowerCase());
-    });
-    setRows(filteredRows);
+    if(searchVal) {
+      const filteredRowData = originalRows.filter((row) => {
+        return row.Symbol.toLowerCase().includes(searchVal.toLowerCase());
+      });
+      setFilteredRows(filteredRowData);
+    } else {
+      setFilteredRows(originalRows);
+    }
   };
 
   const cancelSearch = () => {
+    console.log('cancel search');
     setSearched('');
     requestSearch(searched);
   };
@@ -59,8 +64,8 @@ function Stocks() {
               </TableRow>
             </TableHead>
             <TableBody id="table-body">
-              {rows.length ? (
-                rows.map(
+              {filteredRows.length ? (
+                filteredRows.map(
                   (row) =>
                     row.Symbol && (
                       <TableRow key={row.Name} id="table-row">
