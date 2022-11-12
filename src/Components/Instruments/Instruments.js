@@ -33,7 +33,8 @@ function Instruments() {
         .then((data) => {
           if (data && data.payload) {
             let rawData = data.payload[`${params.symbol}`];
-            rawData = [...rawData, ...dummyData]
+            // Uncomment This Line in order to test Quotes for future events and expired functionality.
+            // rawData = [...rawData, ...dummyData];
             rawData = filterExpiredInstruments(rawData, 'api use effect');
             rawData.sort((a, b) => new Date(b.time) - new Date(a.time));
             setQuotes(rawData);
@@ -102,7 +103,9 @@ function Instruments() {
               {quotes.length ? (
                 quotes.map((row) => (
                   <TableRow key={row.price} id="table-row">
-                    <TableCell align="center">{row.price.toFixed(2) || 'NA'} </TableCell>
+                    <TableCell align="center">
+                      {row.price.toFixed(2) || 'NA'}{' '}
+                    </TableCell>
                     <TableCell align="center">{row.time || 'NA'} </TableCell>
                     <TableCell align="center">
                       {row.valid_till || 'NA'}
@@ -112,8 +115,11 @@ function Instruments() {
               ) : (
                 <TableRow>
                   <TableCell align="center" colSpan={3} id="expired-text">
-                    All Instruments Expired <br/>
-                    <p className='expired-text-note'>Note: Valid Till Column's value is less than current time i.e expired.</p>
+                    All Instruments Expired <br />
+                    <p className="expired-text-note">
+                      Note: Valid Till Column's value is less than current time
+                      i.e expired.
+                    </p>
                   </TableCell>
                 </TableRow>
               )}
