@@ -1,0 +1,57 @@
+.quotes-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.quotes-title{
+    text-align: center;
+}
+#table-container{
+    width: 50%;
+    margin-top: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#table{
+    border-collapse: collapse;
+    width: 100%;
+}
+#table-head{
+    font-size: 20px;
+  padding: 8px;
+  font-family: 'Roboto' sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+#table-row:nth-child(even){
+    background-color: #D6EEEE;
+}
+p{
+    display: inline-block;
+}
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 8px;
+  }
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  #expired-text{
+    font-size: 20px;
+    font-weight: 600;
+    font-family:sans-serif;
+  }
+  .expired-text-note{
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+  }
